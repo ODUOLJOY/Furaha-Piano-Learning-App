@@ -3,80 +3,112 @@ import {
   SafeAreaView,
   ScrollView,
   Text,
-  TouchableOpacity,
+  View,
   StyleSheet,
 } from "react-native";
 
-const modules = [
-  "Module 1 - Music Notes",
-  "Module 2 - Rhythm & Meter",
-  "Module 3 - Scales & Keys",
-  "Module 4 - Chords & Harmony",
-  "Module 5 - Sight Reading",
-  "Module 6 - Ear Training",
-  "Module 7 - Finger Exercises",
-  "Module 8 - Worship Songs",
-  "Module 9 - Improvisation",
-  "Module 10 - Advanced Performance",
-];
+import PianoKeyboard from "./components/PianoKeyboard";
+import ProgressCard from "./components/ProgressCard";
+import QuizCard from "./components/QuizCard";
+import BadgeCard from "./components/BadgeCard";
+import CertificateView from "./components/CertificateView";
+import VideoLesson from "./components/VideoLesson";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Text style={styles.title}>
-          🎹 Furaha Piano Learning App
+
+        <Text style={styles.header}>
+          🎹 Furaha Piano Learning
         </Text>
 
-        <Text style={styles.subtitle}>
-          Learn Piano From Beginner To Advanced
-        </Text>
+        <ProgressCard />
 
-        {modules.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            style={styles.card}
-          >
-            <Text style={styles.cardText}>
-              {item}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            Continue Learning
+          </Text>
+
+          <Text>Module 1 - Note Reading</Text>
+          <Text>75% Complete</Text>
+
+          <Text>Module 2 - Rhythm</Text>
+          <Text>60% Complete</Text>
+
+          <Text>Module 3 - Scales</Text>
+          <Text>20% Complete</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            Interactive Piano
+          </Text>
+
+          <PianoKeyboard />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            Daily Quiz
+          </Text>
+
+          <QuizCard />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            Achievements
+          </Text>
+
+          <BadgeCard />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            Certificate
+          </Text>
+
+          <CertificateView />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            Video Lessons
+          </Text>
+
+          <VideoLesson />
+        </View>
+
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F5F7FA",
-    padding: 20,
+  container:{
+    flex:1,
+    backgroundColor:"#F4F6F8"
   },
 
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginTop: 20,
+  header:{
+    fontSize:28,
+    fontWeight:"bold",
+    textAlign:"center",
+    marginVertical:20
   },
 
-  subtitle: {
-    textAlign: "center",
-    marginBottom: 25,
-    color: "#666",
+  section:{
+    backgroundColor:"#fff",
+    margin:10,
+    padding:15,
+    borderRadius:15,
+    elevation:3
   },
 
-  card: {
-    backgroundColor: "#1976D2",
-    padding: 18,
-    borderRadius: 12,
-    marginBottom: 12,
-  },
-
-  cardText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
+  sectionTitle:{
+    fontSize:18,
+    fontWeight:"bold",
+    marginBottom:10
+  }
 });
